@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hCaptcha</title>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent; /* let Compose background show */
+        }
+        #captcha-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .h-captcha {
+            width: 100% !important;
+            max-width: 400px; /* limits width on large screens */
+        }
+    </style>
+</head>
+<body>
+<div id="captcha-container">
+    <div class="h-captcha"
+         data-sitekey="bb566d50-6ad8-46d2-8d24-58061d08a3ca"
+         data-callback="onSuccess">
+    </div>
+</div>
+
+<script>
+    function onSuccess(token) {
+        if (window.Android && window.Android.onSuccess) {
+            window.Android.onSuccess(token);
+        }
+    }
+</script>
+</body>
+</html>
